@@ -1,11 +1,7 @@
-import knex from 'knex';
-
-import config from 'src/db/config';
+import client from 'src/db/client';
 
 const migrate = async () => {
-  const client = knex(config);
-
-  await client.migrate.latest();
+  await client().migrate.latest();
 
   process.exit(0);
 };

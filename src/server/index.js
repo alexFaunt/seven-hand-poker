@@ -2,11 +2,19 @@
 
 import Koa from 'koa';
 import Router from 'koa-router';
+import koaBody from 'koa-bodyparser';
 
-export default async function server(config = {}) {
+import graphql from 'src/server/graphql';
+import { graphiqlKoa } from 'apollo-server-koa';
+
+export default async function server(config) {
   const app = new Koa();
   const router = new Router();
 
+  router.post('/graphql', graphql(config));
+  router.get('/graphiql', graphiqlKoa({ endpointURL: '/graphql' }));
+
+  app.use(koaBody());
   app.use(router.routes());
   app.use(router.allowedMethods());
 

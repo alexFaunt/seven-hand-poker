@@ -1,11 +1,7 @@
-import knex from 'knex';
-
-import config from 'src/db/config';
+import client from 'src/db/client';
 
 const rollback = async () => {
-  const client = knex(config);
-
-  await client.migrate.rollback();
+  await client().migrate.latest();
 
   process.exit(0);
 };
