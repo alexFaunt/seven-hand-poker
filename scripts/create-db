@@ -1,0 +1,6 @@
+CREATE ROLE seven_admin;
+ALTER ROLE seven_admin WITH LOGIN PASSWORD 'seven_admin' NOSUPERUSER NOCREATEDB NOCREATEROLE;
+CREATE DATABASE seven_hand_poker OWNER seven_admin;
+REVOKE ALL ON DATABASE seven_hand_poker FROM PUBLIC;
+GRANT CONNECT ON DATABASE seven_hand_poker TO seven_admin;
+GRANT ALL ON DATABASE seven_hand_poker TO seven_admin;

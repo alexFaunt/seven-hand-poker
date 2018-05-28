@@ -9,8 +9,11 @@
     "start:dev": "NODE_ENV=development babel-node -r ./node_modules/dotenv/config ./src",
     "build": "yarn build:api",
     "build:api": "rm -rf ./dist && babel src -d dist --copy-files --ignore *.test.js,__mocks__/*.js",
+    "migrate": "babel-node -r ./node_modules/dotenv/config ./src/db/migrate",
+    "rollback": "babel-node -r ./node_modules/dotenv/config ./src/db/rollback",
+    "seed": "knex seed:run",
     "lint": "eslint --ignore-path .gitignore --cache .",
-    "postinstall": "yarn build",
+    "postinstall": "yarn build && yarn migrate",
     "prepush": "yarn lint"
   },
   "engines": {
@@ -24,14 +27,16 @@
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.49",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.49",
     "@babel/preset-env": "^7.0.0-beta.49",
+    "babel-plugin-module-resolver": "^3.1.1",
     "convict": "^4.2.0",
+    "dotenv": "^5.0.1",
+    "knex": "^0.14.6",
     "koa": "^2.5.1",
-    "koa-router": "^7.4.0"
+    "koa-router": "^7.4.0",
+    "pg": "^7.4.3"
   },
   "devDependencies": {
     "babel-eslint": "8",
-    "babel-plugin-module-resolver": "^3.1.1",
-    "dotenv": "^5.0.1",
     "eslint": "4.x",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-import-resolver-babel-module": "5.0.0-beta.0",
