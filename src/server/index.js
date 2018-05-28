@@ -14,7 +14,7 @@ export default async function server(config = {}) {
     ctx.body = 'Yeah it works';
   });
 
-  const port = config.PORT || 8080;
+  const port = config.PORT;
 
   // Ignoring this as it would just be spam in sentry.
   app.listen(port, () => console.info(`server running on port ${port}`));

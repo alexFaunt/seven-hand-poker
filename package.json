@@ -5,31 +5,33 @@
   "author": "alexfaunt <alexfaunt@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node dist",
-    "start:dev": "babel-node ./src",
+    "start": "NODE_ENV=production node dist",
+    "start:dev": "NODE_ENV=development babel-node -r ./node_modules/dotenv/config ./src",
     "build": "yarn build:api",
     "build:api": "rm -rf ./dist && babel src -d dist --copy-files --ignore *.test.js,__mocks__/*.js",
     "lint": "eslint --ignore-path .gitignore --cache .",
+    "postinstall": "yarn build",
     "prepush": "yarn lint"
   },
   "engines": {
-    "node": "10.2.1",
+    "node": "8.11.2",
     "yarn": "0.27.5"
   },
   "dependencies": {
-    "dotenv": "^5.0.1",
-    "koa": "^2.5.1",
-    "koa-router": "^7.4.0"
-  },
-  "devDependencies": {
     "@babel/cli": "^7.0.0-beta.49",
     "@babel/core": "^7.0.0-beta.49",
     "@babel/node": "^7.0.0-beta.49",
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.49",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.49",
     "@babel/preset-env": "^7.0.0-beta.49",
+    "convict": "^4.2.0",
+    "koa": "^2.5.1",
+    "koa-router": "^7.4.0"
+  },
+  "devDependencies": {
     "babel-eslint": "8",
     "babel-plugin-module-resolver": "^3.1.1",
+    "dotenv": "^5.0.1",
     "eslint": "4.x",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-import-resolver-babel-module": "5.0.0-beta.0",
