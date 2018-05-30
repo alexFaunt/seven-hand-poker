@@ -1,21 +1,9 @@
 import { graphqlKoa } from 'apollo-server-koa';
-import { builder } from 'objection-graphql';
-import { Model } from 'objection';
-import client from 'src/db/client';
 
-import User from 'src/server/graphql/models/user';
-
-export default (/* config */) => {
-  Model.knex(client());
-
-  const schema = builder()
-    .model(User)
-    .build();
-
-  return graphqlKoa(async (/* ctx */) => ({
-    schema,
-    context: {},
-    // formatError,
-    debug: false,
-  }));
-};
+export default () => graphqlKoa(async (/* ctx */) => ({
+  // Using require here to make the watcher work
+  schema: require('src/server/graphql/schema').default, // eslint-disable-line global-require
+  context: {},
+  // formatError,
+  debug: false,
+}));

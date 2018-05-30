@@ -1,10 +1,12 @@
 {
   "parser": "babel-eslint",
   "extends": [
-    "airbnb-base"
+    "airbnb-base",
+    "plugin:react/recommended"
   ],
   "plugins": [
-    "filenames"
+    "filenames",
+    "react"
   ],
   "env": {
     "node": true
@@ -31,13 +33,26 @@
     "no-use-before-define": ["error", { "variables": true, "functions": false, "classes": true }],
     "object-curly-newline": "off",
     "import/prefer-default-export": "off",
-    "filenames/match-regex": ["error", "^[a-z0-9.-]+$", true]
+    "filenames/match-regex": ["error", "^[a-z0-9.-]+$", true],
+    "react/jsx-filename-extension": "off"
   },
   "overrides": [
     {
       "files": ["*.test.js", "test-utils/**/*", "**/__mocks__/*.js"],
       "env": {
         "jest": true
+      }
+    },
+    {
+      "files": ["src/client/*.js"],
+      "env": {
+        "browser": true
+      }
+    },
+    {
+      "files": ["webpack-config/*.js"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
       }
     }
   ]

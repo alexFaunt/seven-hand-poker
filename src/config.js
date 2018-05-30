@@ -2,6 +2,11 @@
 import convict from 'convict';
 
 const config = {
+  NODE_ENV: {
+    doc: '',
+    format: ['production', 'development'],
+    default: null,
+  },
   PORT: {
     doc: 'Port to expose app on',
     format: 'port',
