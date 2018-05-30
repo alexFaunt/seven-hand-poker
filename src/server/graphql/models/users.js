@@ -1,11 +1,12 @@
 import { Model } from 'objection';
 
-export default class User extends Model {
-  static tableName = 'user';
+export default class Users extends Model {
+  static tableName = 'users';
 
   static get jsonSchema() {
     return {
       title: 'User',
+      description: 'Description of a user',
       type: 'object',
       required: ['id', 'nickname'],
 
@@ -20,8 +21,4 @@ export default class User extends Model {
       },
     };
   }
-
-  // static get relationMappings() {
-  //   return {};
-  // }
 }

@@ -3,11 +3,12 @@ import { Switch, Route } from 'react-router';
 
 import Home from 'src/app/pages/home';
 import NoMatch from 'src/app/pages/no-match';
+import User from 'src/app/pages/user';
 
-// TODO stricter react linter for spacing and strings etc
 const App = () => (
   <Switch>
-    <Route exact path='/' component={Home}/>
+    <Route exact path='/' component={Home} />
+    <Route exact path='/user/:id' component={User} />
     <Route component={NoMatch} />
   </Switch>
 );

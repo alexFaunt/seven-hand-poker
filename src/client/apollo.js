@@ -1,9 +1,10 @@
 /* eslint-disable no-console */
 import { ApolloClient } from 'apollo-client';
-import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { onError } from 'apollo-link-error';
 import { ApolloLink } from 'apollo-link';
+
+import cache from 'src/app/apollo/cache';
 
 export default (uri) => (
   new ApolloClient({
@@ -23,6 +24,6 @@ export default (uri) => (
         credentials: 'same-origin',
       }),
     ]),
-    cache: new InMemoryCache(),
+    cache: cache.restore(window.__APOLLO_STATE__),
   })
 );

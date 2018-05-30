@@ -10,13 +10,13 @@
 
 ## TODO
 
-* create a seed to add users
-* webpack + webpack dec server
-* create some react app stuff & make sure queries are done (client and server)
+* Apollo cache resolver / query file
 * styled components + ssr
-* logger
-* Static assets for images / fonts etc (webpacked?)
+* better eslint rules for react - it's not linting spaces or strings
 * flow + prop types
+* logger
+* error middleware?
+* Static assets for images / fonts etc (webpacked?)
 * better react linter rules - strings and spaces especially
 * better production builds e.g. hashed assets
 * jest

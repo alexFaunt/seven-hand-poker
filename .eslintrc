@@ -44,7 +44,7 @@
       }
     },
     {
-      "files": ["src/client/*.js"],
+      "files": ["src/client/**/*.js"],
       "env": {
         "browser": true
       }
