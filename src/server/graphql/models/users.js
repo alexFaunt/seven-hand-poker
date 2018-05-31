@@ -1,4 +1,10 @@
+// @flow
 import { Model } from 'objection';
+
+export type User = {
+  id: number,
+  nickname: string,
+};
 
 export default class Users extends Model {
   static tableName = 'users';

@@ -1,3 +1,4 @@
+// @flow
 import { graphqlKoa } from 'apollo-server-koa';
 
 export default () => graphqlKoa(async (/* ctx */) => ({

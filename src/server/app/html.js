@@ -1,9 +1,17 @@
+// @flow
 /* eslint-disable react/no-danger */
 import React from 'react';
 
+import type { Client } from 'src/app/apollo/client';
+
+type Props = {
+  client: Client,
+  content: string,
+};
+
 // TODO - the bundle - need some webpack in here
 // eslint-disable-next-line
-const Html = ({ content, client }) => (
+const Html = ({ content, client }: Props) => (
   <html lang="en">
     <head>
       <meta charSet="utf-8" />

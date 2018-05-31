@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Switch, Route } from 'react-router';
 
@@ -7,8 +8,8 @@ import User from 'src/app/pages/user';
 
 const App = () => (
   <Switch>
-    <Route exact path='/' component={Home} />
-    <Route exact path='/user/:id' component={User} />
+    <Route exact path="/" component={Home} />
+    <Route exact path="/user/:id" component={User} />
     <Route component={NoMatch} />
   </Switch>
 );

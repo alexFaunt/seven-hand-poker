@@ -2,9 +2,11 @@
   "parser": "babel-eslint",
   "extends": [
     "airbnb-base",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:flowtype/recommended"
   ],
   "plugins": [
+    "flowtype",
     "filenames",
     "react"
   ],
@@ -34,7 +36,16 @@
     "object-curly-newline": "off",
     "import/prefer-default-export": "off",
     "filenames/match-regex": ["error", "^[a-z0-9.-]+$", true],
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    "jsx-quotes": ["error", "prefer-double"],
+    "react/jsx-wrap-multilines": ["error", {
+      "declaration": true,
+      "assignment": true,
+      "return": true,
+      "arrow": true
+    }],
+    "react/jsx-indent": ["error", 2],
+    "react/jsx-curly-spacing": ["error", { "attributes": { "when": "never" }, "children": { "when": "always" } }]
   },
   "overrides": [
     {

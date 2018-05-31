@@ -1,9 +1,10 @@
+// @flow
 import React from 'react';
 import { render } from 'react-dom';
 import App from 'src/app';
 import { BrowserRouter } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
-import createClient from 'src/client/apollo';
+import createClient from 'src/app/apollo/client';
 
 // TODO get url from config
 const Client = () => (
@@ -14,4 +15,7 @@ const Client = () => (
   </ApolloProvider>
 );
 
-render(<Client />, document.getElementById('app'));
+const element = document.getElementById('app');
+if (element) {
+  render(<Client />, element);
+}

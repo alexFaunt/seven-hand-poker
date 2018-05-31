@@ -1,5 +1,5 @@
+// @flow
 /* eslint-disable no-console */
-
 import Koa from 'koa';
 import Router from 'koa-router';
 import koaBody from 'koa-bodyparser';
@@ -11,13 +11,16 @@ import graphql from 'src/server/graphql';
 import app from 'src/server/app';
 import webpackConfig from 'webpack-config/dev';
 
-export default async (config) => {
+import type { Context } from 'koa';
+import type { Config } from 'src/config';
+
+export default async (config: Config) => {
   const server = new Koa();
   const router = new Router();
 
-  router.post('/graphql', graphql(config));
+  router.post('/graphql', graphql());
   router.get('/graphiql', graphiqlKoa({ endpointURL: '/graphql' }));
-  router.get('/health', (ctx) => { ctx.body = 'OK'; });
+  router.get('/health', (ctx: Context) => { ctx.body = 'OK'; });
 
   router.get('*', app());
   // TODO some how work out if it's a 404 and set the status

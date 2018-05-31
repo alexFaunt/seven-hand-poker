@@ -1,5 +1,11 @@
+// @flow
 /* eslint-disable no-process-env */
 import convict from 'convict';
+
+export type Config = {
+  NODE_ENV: 'development' | 'production',
+  PORT: string,
+}
 
 const config = {
   NODE_ENV: {
@@ -24,8 +30,5 @@ const withEnv = Object.keys(config).reduce((acc, key) => ({
 
 const ouput = convict(withEnv);
 ouput.validate({ allowed: 'strict' });
-
-// TODO - react server
-// global.__ENV__ = ouput.getProperties();
 
 export default ouput.getProperties();

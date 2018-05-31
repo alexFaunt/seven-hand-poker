@@ -1,5 +1,8 @@
+// @flow
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { toIdValue } from 'apollo-utilities';
+
+export type Cache = {}; // TODO how do we define this?
 
 const cache = new InMemoryCache({
   cacheRedirects: {

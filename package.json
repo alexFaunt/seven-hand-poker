@@ -15,10 +15,11 @@
     "db:migrate": "babel-node -r ./node_modules/dotenv/config ./src/db migrate",
     "db:rollback": "babel-node -r ./node_modules/dotenv/config ./src/db rollback",
     "db:seed": "babel-node -r ./node_modules/dotenv/config ./src/db seed",
-    "lint": "eslint --ignore-path .gitignore --cache .",
+    "lint": "eslint --ignore-path .gitignore --ignore-pattern /flow-typed/ --cache .",
+    "flow": "flow check",
     "webpack-stats": "webpack-cli --config ./webpack-config/stats.js",
     "heroku-postbuild": "yarn build && yarn db:migrate",
-    "prepush": "yarn lint"
+    "prepush": "yarn lint && yarn flow"
   },
   "engines": {
     "node": "8.11.2",
@@ -31,6 +32,7 @@
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.49",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.49",
     "@babel/preset-env": "^7.0.0-beta.49",
+    "@babel/preset-flow": "^7.0.0-beta.49",
     "@babel/preset-react": "^7.0.0-beta.49",
     "apollo-cache-inmemory": "^1.2.1",
     "apollo-client": "^2.3.1",
@@ -65,8 +67,10 @@
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-import-resolver-babel-module": "5.0.0-beta.0",
     "eslint-plugin-filenames": "^1.2.0",
+    "eslint-plugin-flowtype": "^2.48.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-react": "^7.8.2",
+    "flow-bin": "^0.73.0",
     "husky": "^0.14.3",
     "koa-webpack": "^4.0.0",
     "webpack": "^4.10.1",

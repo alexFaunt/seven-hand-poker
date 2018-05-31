@@ -1,3 +1,4 @@
+// @flow
 import { builder } from 'objection-graphql';
 import { Model } from 'objection';
 import client from 'src/db/client';

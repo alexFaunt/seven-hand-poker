@@ -1,3 +1,4 @@
+// @flow
 /* eslint-disable no-console */
 import server from 'src/server';
 import config from 'src/config';
