@@ -18,6 +18,11 @@ const config = {
     format: 'port',
     default: null,
   },
+  DATABASE_URL: {
+    doc: 'Url to connect to database',
+    format: String,
+    default: null,
+  },
 };
 
 const withEnv = Object.keys(config).reduce((acc, key) => ({

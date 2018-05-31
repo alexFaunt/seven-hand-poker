@@ -7,10 +7,9 @@
   "scripts": {
     "start": "NODE_ENV=production node dist",
     "start:dev": "babel-node -r ./node_modules/dotenv/config ./src/",
-    "build": "yarn clean && yarn build:api && yarn build:app && yarn build:client",
-    "build:clean": "rm -rf ./dist",
-    "build:api": "babel src/server -d dist/server --copy-files --ignore *.test.js,__mocks__/*.js",
-    "build:app": "babel src/app -d dist/app --copy-files --ignore *.test.js,__mocks__/*.js",
+    "build": "yarn build:clean && yarn build:server && yarn build:client",
+    "build:clean": "rm -rf ./dist && mkdir dist && mkdir dist/server",
+    "build:server": "babel src -d dist --copy-files --ignore *.test.js,__mocks__/*.js,/src/db/",
     "build:client": "webpack-cli --config ./webpack-config/prod.js",
     "db:migrate": "babel-node -r ./node_modules/dotenv/config ./src/db migrate",
     "db:rollback": "babel-node -r ./node_modules/dotenv/config ./src/db rollback",
@@ -42,6 +41,7 @@
     "apollo-link-schema": "^1.1.0",
     "apollo-server-koa": "^1.3.6",
     "apollo-utilities": "^1.0.13",
+    "babel-loader": "^8.0.0-beta",
     "babel-plugin-module-resolver": "^3.1.1",
     "convict": "^4.2.0",
     "dotenv": "^5.0.1",
@@ -51,6 +51,7 @@
     "koa": "^2.5.1",
     "koa-bodyparser": "next",
     "koa-router": "next",
+    "koa-webpack": "^4.0.0",
     "objection": "^1.1.8",
     "objection-graphql": "^0.4.0",
     "pg": "^7.4.3",
@@ -58,11 +59,14 @@
     "react-apollo": "^2.1.4",
     "react-dom": "^16.4.0",
     "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2",
+    "webpack": "^4.10.1",
+    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-cli": "^2.1.4",
+    "webpack-merge": "^4.1.2"
   },
   "devDependencies": {
     "babel-eslint": "8",
-    "babel-loader": "^8.0.0-beta",
     "eslint": "4.x",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-import-resolver-babel-module": "5.0.0-beta.0",
@@ -71,11 +75,6 @@
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-react": "^7.8.2",
     "flow-bin": "^0.73.0",
-    "husky": "^0.14.3",
-    "koa-webpack": "^4.0.0",
-    "webpack": "^4.10.1",
-    "webpack-bundle-analyzer": "^2.13.1",
-    "webpack-cli": "^2.1.4",
-    "webpack-merge": "^4.1.2"
+    "husky": "^0.14.3"
   }
 }
