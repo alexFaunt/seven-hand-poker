@@ -1,9 +1,10 @@
 // @flow
 import React from 'react';
-import { render } from 'react-dom';
-import App from 'src/app';
+import { hydrate } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
+
+import App from 'src/app';
 import createClient from 'src/app/apollo/client';
 
 // TODO get url from config
@@ -17,5 +18,5 @@ const Client = () => (
 
 const element = document.getElementById('app');
 if (element) {
-  render(<Client />, element);
+  hydrate(<Client />, element);
 }

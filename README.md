@@ -10,14 +10,15 @@
 
 ## TODO
 
-* Static assets for images / fonts etc (webpacked?)
-* better production builds e.g. hashed assets - may build on previous - might need manifest/stats
+* better production builds e.g. hashed assets - long lived cached libs - might need manifest/stats
 * Fix dependencies that are dev deps because of the dev set up - they might work so long as used in the heroku-postbuild hook?! dno try it now that it works
 * Apollo cache resolver / query file set up
-* styled components + ssr
+* styled component  s + ssr
+* react helmet
 * logger
 * error middleware?
 * component did catch error top level
+* storybook
 * jest
 * codecept
 * CI - travis? circle? whats free now?

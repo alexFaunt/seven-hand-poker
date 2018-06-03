@@ -27,13 +27,20 @@ async function run() {
     const watcher = chokidar.watch(folder);
 
     watcher.on('ready', () => {
-      watcher.on('all', (event, file) => {
+      watcher.on('all', () => {
         console.log('[WATCHER] file changed - purging cache');
-        if (file in require.cache) {
-          delete require.cache[file];
-        }
-        delete require.cache[path.join(folder, 'app/index.js')];
-        delete require.cache[path.join(folder, 'server/graphql/schema.js')];
+        Object.keys(require.cache)
+          .forEach((id) => {
+            if (id.includes('/server/') || id.includes('/app/')) {
+              delete require.cache[id];
+            }
+          });
+
+        // if (file in require.cache) {
+        //   delete require.cache[file];
+        // }
+        // delete require.cache[path.join(folder, 'app/index.js')];
+        // delete require.cache[path.join(folder, 'server/graphql/schema.js')];
       });
     });
   }

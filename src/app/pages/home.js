@@ -3,6 +3,7 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
+import { PageHeader } from 'src/app/components/atoms/typography';
 
 import type { Node } from 'react';
 import type { User } from 'src/server/graphql/models/users';
@@ -34,7 +35,7 @@ const UserList = ({ users }: UserListProps) => (
 
 const Home = () => (
   <div>
-    <h1>Users:</h1>
+    <PageHeader>Users!</PageHeader>
     <Query query={GET_USERS}>
       {
         ({ loading, error, data }) => {
