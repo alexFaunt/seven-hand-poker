@@ -2,6 +2,7 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+import { Helmet } from 'react-helmet';
 
 import type { Match } from 'react-router';
 import type { Node } from 'react';
@@ -31,7 +32,12 @@ const GET_USER = gql`
 const Loading = () => <span>Loading</span>;
 const Error = ({ children }: ErrorProps) => <span>{ children }</span>;
 const User = ({ id, nickname }: UserProps) => (
-  <h1>{ `${nickname} is id: ${id}` }</h1>
+  <div>
+    <Helmet>
+      <title>{ nickname }</title>
+    </Helmet>
+    <h1>{ `${nickname} is id: ${id}` }</h1>
+  </div>
 );
 
 const UserPage = ({ match }: UserPageProps) => (

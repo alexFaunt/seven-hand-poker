@@ -3,6 +3,8 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+
 import { PageHeader } from 'src/app/components/atoms/typography';
 
 import type { Node } from 'react';
@@ -35,6 +37,9 @@ const UserList = ({ users }: UserListProps) => (
 
 const Home = () => (
   <div>
+    <Helmet>
+      <title>Home</title>
+    </Helmet>
     <PageHeader>Users!</PageHeader>
     <Query query={GET_USERS}>
       {
