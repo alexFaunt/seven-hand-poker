@@ -17,6 +17,7 @@
 * styled components + ssr
 * logger
 * error middleware?
+* component did catch error top level
 * jest
 * codecept
 * CI - travis? circle? whats free now?

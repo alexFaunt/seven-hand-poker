@@ -60,7 +60,8 @@ declare module "react-router" {
   ) => void;
 
   declare type StaticRouterContext = {
-    url?: string
+    url?: string,
+    [string]: any
   };
 
   declare export class StaticRouter extends React$Component<{

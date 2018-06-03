@@ -31,7 +31,16 @@ export default () => async (ctx: Context, next: () => Promise<void>) => {
     </ApolloProvider>
   );
 
+  // React router said we should redirect
+  if (context.url) {
+    return ctx.redirect(context.url);
+  }
+
   const content = await renderToStringWithData(AppContent);
+
+  if (context.status) {
+    ctx.status = context.status;
+  }
 
   const html = <Html content={content} client={client} />;
 

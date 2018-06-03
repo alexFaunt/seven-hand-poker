@@ -6,6 +6,9 @@ import koaBody from 'koa-bodyparser';
 import { graphiqlKoa } from 'apollo-server-koa';
 import koaWebpack from 'koa-webpack'; // eslint-disable-line global-require, import/no-extraneous-dependencies
 import webpack from 'webpack'; // eslint-disable-line global-require, import/no-extraneous-dependencies
+import serve from 'koa-static';
+import path from 'path';
+import mount from 'koa-mount';
 
 import graphql from 'src/server/graphql';
 import app from 'src/server/app';
@@ -21,19 +24,16 @@ export default async (config: Config) => {
   router.post('/graphql', graphql());
   router.get('/graphiql', graphiqlKoa({ endpointURL: '/graphql' }));
   router.get('/health', (ctx: Context) => { ctx.body = 'OK'; });
-
   router.get('*', app());
-  // TODO some how work out if it's a 404 and set the status
 
-  server.use(koaBody());
-
-  // TODO static asset server for prod
   if (config.NODE_ENV === 'development') {
     server.use(koaWebpack({
       compiler: webpack(webpackConfig),
     }));
   }
 
+  server.use(koaBody());
+  server.use(mount('/static', serve(path.resolve(__dirname, '../static'))));
   server.use(router.routes());
   server.use(router.allowedMethods());
 

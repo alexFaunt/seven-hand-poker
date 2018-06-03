@@ -22,7 +22,7 @@
   },
   "engines": {
     "node": "8.11.2",
-    "yarn": "0.27.5"
+    "yarn": "1.7.0"
   },
   "dependencies": {
     "@babel/cli": "^7.0.0-beta.49",
@@ -50,7 +50,9 @@
     "knex": "^0.14.6",
     "koa": "^2.5.1",
     "koa-bodyparser": "next",
+    "koa-mount": "^3.0.0",
     "koa-router": "next",
+    "koa-static": "^4.0.3",
     "koa-webpack": "^4.0.0",
     "objection": "^1.1.8",
     "objection-graphql": "^0.4.0",

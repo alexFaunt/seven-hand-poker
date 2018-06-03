@@ -28,6 +28,7 @@ async function run() {
 
     watcher.on('ready', () => {
       watcher.on('all', (event, file) => {
+        console.log('[WATCHER] file changed - purging cache');
         if (file in require.cache) {
           delete require.cache[file];
         }
