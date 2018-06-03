@@ -2,8 +2,6 @@
 /* eslint-disable no-console */
 import server from 'src/server';
 import config from 'src/config';
-import path from 'path';
-import chokidar from 'chokidar'; // eslint-disable-line import/no-extraneous-dependencies,global-require
 
 const uncaughtError = (error) => {
   console.error('[FATAL]', error);
@@ -20,29 +18,9 @@ async function run() {
     uncaughtError(error);
   }
 
-  // In development mode clear changed files from the cache and the entry points for app and graphql
-  // This is basically hot module reloading for the server
   if (config.NODE_ENV === 'development') {
-    const folder = path.resolve(__dirname);
-    const watcher = chokidar.watch(folder);
-
-    watcher.on('ready', () => {
-      watcher.on('all', () => {
-        console.log('[WATCHER] file changed - purging cache');
-        Object.keys(require.cache)
-          .forEach((id) => {
-            if (id.includes('/server/') || id.includes('/app/')) {
-              delete require.cache[id];
-            }
-          });
-
-        // if (file in require.cache) {
-        //   delete require.cache[file];
-        // }
-        // delete require.cache[path.join(folder, 'app/index.js')];
-        // delete require.cache[path.join(folder, 'server/graphql/schema.js')];
-      });
-    });
+    const watcher = require('src/development/watcher').default; // eslint-disable-line global-require
+    watcher();
   }
 }
 

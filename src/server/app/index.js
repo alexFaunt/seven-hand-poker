@@ -55,5 +55,3 @@ export default () => async (ctx: Context, next: () => Promise<void>) => {
 
   return next();
 };
-
-// TODO maybe i can just do the global require thing at the top level - dno why i done it here

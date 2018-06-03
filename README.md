@@ -11,9 +11,7 @@
 ## TODO
 
 * better production builds e.g. hashed assets - long lived cached libs - might need manifest/stats
-* Fix dependencies that are dev deps because of the dev set up - they might work so long as used in the heroku-postbuild hook?! dno try it now that it works
 * Apollo cache resolver / query file set up
-* styled component  s + ssr
 * react helmet
 * logger
 * error middleware?

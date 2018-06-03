@@ -61,9 +61,10 @@
       }
     },
     {
-      "files": ["webpack-config/*.js"],
+      "files": ["webpack-config/*.js", "src/development/*.js"],
       "rules": {
-        "import/no-extraneous-dependencies": "off"
+        "import/no-extraneous-dependencies": "off",
+        "no-console": "off"
       }
     }
   ]
